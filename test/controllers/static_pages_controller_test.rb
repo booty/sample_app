@@ -18,4 +18,10 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "About | Sample App"
   end
+
+  test "roo should get home" do
+    get "/"
+    assert_response :success
+    assert_select "title", "Home | Sample App"
+  end
 end
