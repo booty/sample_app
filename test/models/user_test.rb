@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.create(name: "Example User", email: "user@example.com")
+    @user = User.create(name: "Example User", email: "user@example.com", password: "123456")
   end
 
   test "should be valid" do
@@ -57,5 +57,20 @@ class UserTest < ActiveSupport::TestCase
       @user.email = invalid
       assert_not @user.valid?, "#{invalid.inspect} should be rejected like the trash it is"
     end
+  end
+
+  test "password should not be bullshit" do
+    @user.password = " "
+    assert_not @user.valid?
+    @user.password = nil
+    assert_not @user.valid?
+    @user.password = "12345"
+    assert_not @user.valid?
+  end
+
+  test "authentication works" do
+    u = User.find_by(email: @user.email)
+    assert u.authenticate(@user.password)
+    assert_not u.authenticate("zzzzzzz")
   end
 end
