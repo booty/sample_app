@@ -62,6 +62,7 @@ group :test do
   gem "minitest-reporters", "~> 1.3"
   gem "guard-minitest", "~> 2.4"
   gem 'rails-controller-testing'
+  gem 'pry-byebug'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
