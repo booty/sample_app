@@ -9,4 +9,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # yuck.
+  # same functionality as logged_in? helper, which isn't available during tests
+  # surely there's a better way....
+  def is_logged_in?
+    !session[:user_id].nil?
+  end
 end
