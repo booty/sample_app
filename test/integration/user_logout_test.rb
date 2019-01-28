@@ -6,7 +6,6 @@ class UserLogoutTest < ActionDispatch::IntegrationTest
     get login_path
     post login_path, params: { session: { email: @user.email, password: 'password' } }
 
-
     delete logout_path
     follow_redirect!
     assert !is_logged_in?
