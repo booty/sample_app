@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
@@ -13,11 +12,11 @@ class SessionsController < ApplicationController
       else
         forget(user)
       end
-      flash[:info] = "Welcome back, you stud"
+      flash[:info] = 'Welcome back, you stud'
       redirect_to user
     else
       flash.now[:danger] = "You fucking up dude! Invalid email/password. In fact, you're invalid!"
-      render "new"
+      render 'new'
     end
   end
 

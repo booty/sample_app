@@ -9,6 +9,7 @@ module SessionsHelper
 
   def log_out
     return unless current_user
+
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil

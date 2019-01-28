@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :name, presence: true,
-                   uniqueness: { case_sensitive: false},
+                   uniqueness: { case_sensitive: false },
                    length: { minimum: 5, maximum: 50 }
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
